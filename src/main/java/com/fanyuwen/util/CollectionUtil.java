@@ -12,7 +12,6 @@ public class CollectionUtil {
         return new ListBuilder<>(null, value);
     }
 
-
     public static class ListBuilder<T> extends AbstractBuilder<List<T>> {
         private T value;
         private ListBuilder<T> buildLink;
