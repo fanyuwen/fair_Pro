@@ -2,13 +2,17 @@ package com.fanyuwen.util;
 
 import java.util.*;
 
+/**
+ * @author fanyuwen
+ * 基于双向链表实现的链式创建List和Map的API
+ */
 public class CollectionUtil {
 
-    public static <K, V> MapBuilder<K, V> getMapBuilder(K key, V value) {
+    public static <K, V> MapBuilder<K, V> ofMap(K key, V value) {
         return new MapBuilder<>(null, key, value);
     }
 
-    public static <T> ListBuilder<T> getListBuilder(T value) {
+    public static <T> ListBuilder<T> ofList(T value) {
         return new ListBuilder<>(null, value);
     }
 
@@ -17,7 +21,7 @@ public class CollectionUtil {
         private ListBuilder<T> buildLink;
         private ListBuilder<T> preBuildLink;
 
-        public ListBuilder(ListBuilder<T> listBuilder, T value) {
+        ListBuilder(ListBuilder<T> listBuilder, T value) {
             Objects.requireNonNull(value);
             if (listBuilder != null)
                 listBuilder.buildLink = this;
@@ -80,7 +84,7 @@ public class CollectionUtil {
         private MapBuilder<K, V> buildLink;
         private MapBuilder<K, V> preBuildLink;
 
-        public MapBuilder(MapBuilder<K, V> buildLink, K key, V value) {
+        MapBuilder(MapBuilder<K, V> buildLink, K key, V value) {
             Objects.requireNonNull(key);
             Objects.requireNonNull(value);
             if (buildLink != null)
