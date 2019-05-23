@@ -8,6 +8,10 @@ import java.util.*;
  */
 public class CollectionUtil {
 
+    private CollectionUtil() {
+        throw new IllegalStateException("非法创建对象" + CollectionUtil.class + ",该类不能被创建.");
+    }
+
     public static <K, V> MapBuilder<K, V> ofMap(K key, V value) {
         return new MapBuilder<>(null, key, value);
     }
